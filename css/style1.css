@@ -1,0 +1,289 @@
+*{
+margin: 0;
+padding: 0;
+box-sizing: border-box;
+/* Supprimer toute valeur d'opacité non standard qui pourrait impacter le layout */
+opacity: 1;
+}
+html {
+scroll-behavior: smooth;
+}
+
+body {
+font-family: 'Poppins', sans-serif;
+line-height: 1.6;
+color: #333;
+}
+
+/* Containers généraux */
+.container {
+max-width: 1200px;
+margin: 0 auto;
+padding: 0 20px;
+}
+
+/* Sections */
+.section {
+min-height: 100vh;
+padding: 80px 0;
+display: flex;
+align-items: center;
+justify-content: center;
+}
+
+.section:nth-child(even) {
+background-color: #f8f9fa;
+}
+
+.section h1, .section h2 {
+text-align: center;
+margin-bottom: 20px;
+}
+
+/* Navbar - Le Délice Sénégalais /
+/ Header: centrage fiable et look moderne */
+.navbar {
+background-color: #000;
+box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+position: fixed;
+top: 0;
+width: 100%;
+z-index: 1000;
+transition: all 0.3s ease;
+opacity: 0.95;
+height: 80px;
+}
+
+.nav-container {
+max-width: 1200px;
+margin: 0 auto;
+padding: 0 20px;
+display: flex;
+justify-content: space-between;
+align-items: center;
+height: 100%; /* alignement vertical sur tout le header */
+}
+
+/* Logo et branding */
+.nav-logo .logo-link {
+font-size: 20px;
+font-weight: 600;
+color: #FFD700;
+text-decoration: none;
+transition: color 0.3s ease;
+display: flex;
+align-items: center;
+gap: 8px;
+}
+
+.logo-ld {
+background-color: #FFD700;
+color: #000;
+padding: 5px 10px;
+border-radius: 4px;
+font-weight: 700;
+font-size: 18px;
+display: inline-block;
+}
+
+.nav-logo .logo-link:hover {
+color: #FFD700;
+}
+
+/* Menu Desktop */
+.nav-menu {
+display: flex;
+list-style: none;
+gap: 30px;
+align-items: center;
+}
+
+.nav-item {
+position: relative;
+}
+
+.nav-link {
+color: white;
+text-decoration: none;
+font-weight: 500;
+transition: color 0.3s ease;
+position: relative;
+}
+.nav-link:hover {
+color: #FFD700;
+}
+
+/* underline non intrusive mais centré */
+.nav-link::after {
+content: '';
+position: absolute;
+bottom: -5px;
+left: 0;
+width: 0;
+height: 2px;
+background-color: #FFD700;
+transition: width 0.3s ease;
+}
+.nav-link:hover::after {
+width: 100%;
+}
+
+/* Hamburger et mobile (inchangés par défaut) */
+.hamburger {
+display: none;
+cursor: pointer;
+flex-direction: column;
+gap: 4px;
+}
+.bar {
+width: 25px;
+height: 3px;
+background-color: white;
+transition: all 0.3s ease;
+}
+
+/* Animation hamburger actif */
+.hamburger.active .bar:nth-child(1) {
+transform: rotate(-45deg) translate(-5px, 6px);
+}
+.hamburger.active .bar:nth-child(2) {
+opacity: 0;
+}
+.hamburger.active .bar:nth-child(3) {
+transform: rotate(45deg) translate(-5px, -6px);
+}
+
+/* Responsive - Mobile : afficher le hamburger et centrer le menu déroulant */
+@media screen and (max-width: 768px) {
+.hamburger { display: flex; }
+.nav-menu {
+position: fixed;
+left: -100%;
+top: 70px;
+flex-direction: column;
+background-color: #000;
+width: 100%;
+text-align: center;
+transition: 0.3s;
+box-shadow: 0 10px 27px rgba(0,0,0,0.05);
+padding: 20px 0;
+gap: 0;
+}
+.nav-menu.active { left: 0; }
+.nav-item { margin: 15px 0; }
+.nav-link { display: block; padding: 10px 0; }
+.nav-link::after { display: none; }
+}
+
+/* Texte sur image centré - texte superposé au centre de l'image */
+.text-on-image-center {
+position: absolute;
+top: 50%;
+left: 50%;
+transform: translate(-50%, -50%); / centré exactement au milieu de l'espace /
+width: 100%;
+text-align: center;
+color: #fff;
+padding: 30px 20px;
+margin: 0;
+background: transparent;
+z-index: 2;
+display: flex;
+flex-direction: column;
+align-items: center;
+justify-content: center;
+gap: 0.4rem;
+text-shadow: 0 1px 2px rgba(0,0,0,.6);
+/ pas de transform supplémentaire ici pour éviter décalages */
+}
+
+/* Image qui couvre l’espace et texte centré sur l’image */
+.cardtext-bg-dark {
+width: 100%;
+height: auto;
+object-fit: cover;
+position: relative;
+filter: brightness(30%);
+}
+
+/* Contenus internes à l’intérieur de l’overlay */
+.text-on-image-center .card-title {
+font-size: 7rem;
+margin: 0;
+font-weight: 700;
+}
+.text-on-image-center .header-title {
+font-size: 0.5rem;
+margin: 0.25rem 0;
+font-family: 'Arial', sans-serif;
+font-weight: 100;
+letter-spacing: 1px;
+}
+.text-on-image-center .header-content { padding: 0; }
+.text-on-image-center .header-title {
+font-size: 2rem;
+margin: 0.25rem 0;
+}
+.text-on-image-center .header-buttons {
+display: flex;
+gap: 2rem;
+justify-content: center;
+flex-wrap: wrap;
+}
+
+/* Boutons (Bootstrap-like classes) */
+.btn {
+padding: 0.75rem 1.25rem;
+border-radius: 2rem;
+text-decoration: none;
+display: inline-block;
+height: 3.5rem;
+}
+.btn-primary {
+background-color: #FFD700;
+color: #050505;
+border: none;
+display: inline-flex;
+align-items: center;
+justify-content: center;
+transition: transform 0.2s ease;
+cursor: pointer;
+}
+.btn-secondary {
+background-color: transparent;
+color: #FFD700;
+border: 2px solid #FFD700;
+display: inline-flex;
+align-items: center;
+justify-content: center;
+transition: transform 0.2s ease;
+cursor: pointer;
+font-weight: bold;
+}
+
+.btn-primary:hover { transform: scale(1.05); }
+.btn-secondary:hover {
+transform: scale(1.05);
+background-color: #FFD700;
+color: #050505;
+}
+
+/* Ajustements responsive pour le header et le texte sur image */
+@media (max-width: 768px) {
+.text-on-image-center .card-title { font-size: 1.5rem; }
+.text-on-image-center .header-title { font-size: 1.25rem; }
+.navbar { height: 72px; } / ajustement si nécessaire sur mobile */
+.nav-container { height: 72px; }
+}
+
+/* Navbar scroll effect éventuel */
+.navbar.scrolled {
+background-color: rgba(0, 0, 0, 0.95);
+backdrop-filter: blur(10px);
+box-shadow: 0 2px 20px rgba(0, 0, 0, 0.3);
+}
+
+/* Tiny helper pour éviter comportements inattendus sur certains pages */
+html, body {
+height: 100%;
+}

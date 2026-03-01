@@ -3,6 +3,7 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+    opacity: 3;
 }
 
 body {
@@ -44,6 +45,8 @@ body {
     width: 100%;
     z-index: 1000;
     transition: all 0.3s ease;
+    opacity: 0.8;
+    height: 80px;
 }
 
 .nav-container {
@@ -196,3 +199,170 @@ html {
     backdrop-filter: blur(10px);
     box-shadow: 0 2px 20px rgba(0, 0, 0, 0.3);
 }
+
+/* Image qui couvre l’espace et texte centré sur l’image */
+.card-img {
+  width: 100%;
+  height: auto;
+  display: block;
+  object-fit: cover;
+  position: relative;
+  filter: brightness(30%);
+}
+
+/* Intégrer la Navbar responsive avec navigation vers les sections */
+
+/* l"immage de la page d'accueil et le nom du restaurant */
+.contenus_texte {
+  position: absolute;
+  top: 50%; /* centré verticalement */
+  left: 52%; /* centré horizontalement */
+  transform: translate(-50%, -60%); /* ajustement pour centrer précisément */
+  line-height: 1.2;
+  width: 100%;
+  text-align: center;
+  color: #fff;
+  padding: 0;
+  margin: 0;
+  background: transparent; 
+  z-index: 2;
+  display: flex; 
+  flex-direction: column; 
+  align-items: center;
+  justify-content: center;
+  gap: 2em;
+  text-shadow: 0 1px 2px rgba(0,0,0,.6);
+  margin-top: 80px;
+}
+
+
+/* Styles du contenu interne à l’intérieur de l’overlay */
+.contenus_texte .nom_restaurant {
+  font-size: 6rem;
+  margin: 0;
+  font-weight: 700;
+  line-height: 0,5;
+  
+}
+
+.slogan {
+  font-size: 2rem;
+  margin: 1rem 0;
+  line-height: 0.05;
+
+}   
+.slogan_boutons {
+  text-align: center;
+  padding: 2rem;
+}
+
+
+/* Styles des boutons */
+
+.btn {
+  padding: 0.75rem 1.25rem;
+  border-radius: 2rem;
+  text-decoration: none;
+  display: inline-block;
+  height: 4rem;
+}
+
+.btn-primary {
+  background-color: #FFD700;
+  color: #050505;
+  border: none;
+  display: flex;
+  align-items: center;
+  transition: transform 0.2s ease;
+  cursor: pointer;
+  border: none;
+}
+.btn-secondary {
+  background-color:transparent;
+  color: #FFD700;
+  border: 2px solid #FFD700;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: transform 0.2s ease;
+  cursor: pointer;
+ font-weight: bold;
+
+}
+
+.contenus_texte .header-buttons { 
+  display: flex;
+  gap: 2rem;
+  justify-content: center;
+  flex-wrap: wrap;
+  transform: translateY(50px); /* décalage vers le bas pour un meilleur équilibre visuel */
+}
+
+
+.btn-primary:hover {
+  transform: scale(1.05);
+}
+.btn-secondary:hover {
+  transform: scale(1.05);
+  background-color: #FFD700;
+  color: #050505;
+}
+
+/* Ajustements responsive */
+@media (max-width: 768px) {
+  .contenus_texte .nom_restaurant { font-size: 1.5rem; }
+  .contenus_texte .slogan { font-size: 1.25rem; }
+}
+
+
+/* Assure le centrage horizontal de la souris dans le bloc */
+.mouse-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;               
+  padding-top: 0.25rem;      
+  transform: translateY(20px); 
+}
+
+.mouse {
+  width: 30px;
+  height: 50px;
+  border: 2px solid #FFD700;
+  border-radius: 20px;
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  animation: bounce 2s infinite;
+}
+
+.wheel {
+  width: 6px;
+  height: 6px;
+  background-color: #FFD700;
+  border-radius: 50%;
+  position: absolute;
+  top: 10px;
+  left: 50%;
+  transform: translateX(-50%);
+  animation: scroll-wheel 2s infinite;
+}
+
+@keyframes bounce {
+  0% {
+    transform: translateY(0) rotate(0);
+  }
+  50% {
+    transform: translateY(20px) rotate(0); /* descente */
+  }
+  100% {
+    transform: translateY(0) rotate(0);   /* remonte */
+  }
+}
+
+@keyframes scroll-wheel {
+  0%, 100% { transform: translateX(-50%) translateY(0); }
+  50% { transform: translateX(-50%) translateY(-2px); }
+}
+
