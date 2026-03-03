@@ -87,3 +87,16 @@ style.textContent = `
     }
 `;
 document.head.appendChild(style);
+const menuModal = document.getElementById("menu-modal");
+const closeBtn = document.getElementById("close-menu");
+const menuLink = document.querySelector('a[href="#menu"]');
+
+menuLink.addEventListener("click", function(e) {
+    e.preventDefault();
+    menuModal.style.display = "flex";
+});
+
+closeBtn.addEventListener("click", function() {
+    menuModal.style.display = "none";
+});
+
