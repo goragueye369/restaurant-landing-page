@@ -4,6 +4,444 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Le Délice Sénégalais</title>
+    <link rel="stylesheet" href="css/style.css"/>
+    <link rel="stylesheet" href="css/footer.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet"/>
+  </head>
+  <body>
+    <!--Développer le Header complet (image, overlay, titre, boutons CTA)-->
+    <header class="header" id="home">
+      <div class="header-overlay"></div>
+      <div class="cardtext-bg-dark">
+        <!-- Image de fond du header et ajout du texte sur l'image -->
+        <img
+          src="assets/images/Page_d'accueil.jpeg"
+          class="card-img"
+          alt="Image du restaurant"
+        />
+        <!-- Navbar -->
+        <nav class="navbar">
+          <div class="nav-container">
+            <div class="nav-logo">
+              <a href="#home" class="logo-link">
+                <span class="logo-ld">LD</span> Le Délice Sénégalais
+              </a>
+            </div>
+            
+            <!-- Menu Desktop -->
+            <ul class="nav-menu">
+              <li class="nav-item">
+                <a href="#home" class="nav-link">Accueil</a>
+              </li>
+              <li class="nav-item">
+                <a href="#menu" class="nav-link">Notre Menu</a>
+              </li>
+              <li class="nav-item">
+                <a href="#specials" class="nav-link">Offres spéciales</a>
+              </li>
+              <li class="nav-item">
+                <a href="#reservation" class="nav-link">Réservation</a>
+              </li>
+              <li class="nav-item">
+                <a href="#gallery" class="nav-link">Galerie</a>
+              </li>
+              <li class="nav-item">
+                <a href="#testimonials" class="nav-link">Témoignages</a>
+              </li>
+              <li class="nav-item">
+                <a href="#contact" class="nav-link">Contact</a>
+              </li>
+            </ul>
+
+            <!-- Hamburger Menu -->
+            <div class="hamburger">
+              <span class="bar"></span>
+              <span class="bar"></span>
+              <span class="bar"></span>
+            </div>
+          </div>
+        </nav>
+        <div class="contenus_texte">
+          <h5 class="nom_restaurant" aria-label="Nom du restaurant">
+            Le Délice <br /><span style="color: #ffd700">Sénégalais</span>
+          </h5>
+          <div class="slogan_boutons">
+            <h1 class="slogan">
+              L'authenticité africaine sublimée par la haute gastronomie
+            </h1>
+            <div class="header-buttons">
+              <a href="#menu" class="btn btn-primary">Réserver une Table</a>
+              <a href="#reservation" class="btn btn-secondary"
+                >Commander maintenant</a
+              >
+              <div
+                class="mouse-container"
+                aria-label="Icône souris animée"
+                role="img"
+              >
+                <div class="mouse"><div class="wheel"></div></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </header>
+    <link rel="stylesheet" href="css/style.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <!-- Navbar -->
+    <nav class="navbar">
+      <div class="nav-container">
+        <div class="nav-logo">
+          <a href="#home" class="logo-link">
+            <span class="logo-ld">LD</span> Le Délice Sénégalais
+          </a>
+        </div>
+
+        <!-- Menu Desktop -->
+        <ul class="nav-menu">
+          <li class="nav-item">
+            <a href="index.html"nav-link">Accueil</a>
+          </li>
+          <li class="nav-item">
+            <a href="#menu" class="nav-link">Notre Menu</a>
+          </li>
+          <li class="nav-item">
+            <a href="Offres spéciales.html" nav-link>Offres spéciales</a>
+          </li>
+          <li class="nav-item">
+            <a href="#reservation" class="nav-link">Réservation</a>
+          </li>
+          <li class="nav-item">
+            <a href="#gallery" class="nav-link">Galerie</a>
+          </li>
+          <li class="nav-item">
+            <a href="#testimonials" class="nav-link">Témoignages</a>
+          </li>
+          <li class="nav-item">
+            <a href="#contact" class="nav-link">Contact</a>
+          </li>
+        </ul>
+
+        <!-- Hamburger Menu -->
+        <div class="hamburger">
+          <span class="bar"></span>
+          <span class="bar"></span>
+          <span class="bar"></span>
+        </div>
+      </div>
+    </nav>
+
+    <!-- Sections placeholder -->
+    <section id="home" class="section">
+      <div class="container"></div>
+    </section>
+
+    <section id="menu" class="section">
+            <div class="menu-overlay" id="menu-modal">
+             <div class="menu-container">   
+            <div class="menu-header">
+                <h2>Menu Complet</h2>
+                <button class="close-btn" id="close-menu">&times;</button>
+                </div>
+                <div class="menu-body">
+                <h3 class="category-title">Entrées</h3>
+                <div class="menu-grid">
+                    <div class="menu-card">
+                        <div class="card-img"><img src="assets/images/Pastels au Thon .jpeg" alt="Pastels au Thon"></div>
+                        <div class="card-info"><span>Pastels au Thon</span><span class="price">12€</span></div>
+                    </div>
+                    <div class="menu-card">
+                        <div class="card-img"><img src="assets/images/pastels à la viande.jpeg" alt="Pastels à la Viande"></div>
+                        <div class="card-info"><span>Pastels à la Viande</span><span class="price">12€</span></div>
+                    </div>
+                    <div class="menu-card">
+                        <div class="card-img"><img src="assets/images/Accras de Morue.jpeg" alt="Accras de Morue"></div>
+                        <div class="card-info"><span>Accras de Morue</span><span class="price">14€</span></div>
+                    </div>
+                    <div class="menu-card">
+                        <div class="card-img"><img src="assets/images/Salade Niébé.jpeg" alt="Salade Niébé"></div>
+                        <div class="card-info"><span>Salade Niébé</span><span class="price">10€</span></div>
+                      </div>  
+                    </div>
+                    <h3 class="category-title">Plats Principaux</h3>
+                <div class="menu-grid">
+                    <div class="menu-card">
+                        <div class="card-img"><img src="assets/images/Thiéboudienne.jpeg" alt="Thiéboudienne"></div>
+                        <div class="card-info"><span>Thiéboudienne (Riz au Poisson)</span><span class="price">28€</span></div>
+                    </div>
+                    <div class="menu-card">
+                        <div class="card-img"><img src="assets/images/Yassa Poulet.jpeg" alt="Yassa Poulet"></div>
+                        <div class="card-info"><span>Yassa Poulet</span><span class="price">24€</span></div>
+                    </div>
+                    <div class="menu-card">
+                        <div class="card-img"><img src="assets/images/Mafé Agneau.jpeg" alt="Mafé Agneau"></div>
+                        <div class="card-info"><span>Mafé Agneau</span><span class="price">30€</span></div>
+                    </div>
+                    <div class="menu-card">
+                        <div class="card-img"><img src="assets/images/Yassa Poisson.jpeg" alt="Yassa Poisson"></div>
+                        <div class="card-info"><span>Yassa Poisson</span><span class="price">26€</span></div>
+                    </div>
+                    <div class="menu-card">
+                        <div class="card-img"><img src="assets/images/Mafé Poulet.jpeg" alt="Mafé Poulet"></div>
+                        <div class="card-info"><span>Mafé Poulet</span><span class="price">24€</span></div>
+                    </div>
+                    <div class="menu-card">
+                        <div class="card-img"><img src="assets/images/Jollof Rice Royal.jpeg" alt="Jollof Rice Royal"></div>
+                        <div class="card-info"><span>Jollof Rice Royal</span><span class="price">26€</span></div>
+                    </div>
+                    <div class="menu-card">
+                        <div class="card-img"><img src="assets/images/Poulet DG.jpeg" alt="Poulet DG"></div>
+                        <div class="card-info"><span>Poulet DG</span><span class="price">28€</span></div>
+                    </div>
+                    <div class="menu-card">
+                        <div class="card-img"><img src="assets/images/Poisson Braisé.jpeg" alt="Poisson Braisé"></div>
+                        <div class="card-info"><span>Poisson Braisé</span><span class="price">32€</span></div>
+                      </div>  
+                    </div>
+                    <h3 class="category-title">Desserts</h3>
+                <div class="menu-grid">
+                    <div class="menu-card">
+                        <div class="card-img"><img src="assets/images/Thiakry Coco.jpeg" alt="Thiakry Coco"></div>
+                        <div class="card-info"><span>Thiakry Coco</span><span class="price">10€</span></div>
+                    </div>
+                    <div class="menu-card">
+                        <div class="card-img"><img src="assets/images/Chakery Vanille.jpeg" alt="Chakery Vanille"></div>
+                        <div class="card-info"><span>Chakery Vanille</span><span class="price">10€</span></div>
+                    </div>
+                    <div class="menu-card">
+                        <div class="card-img"><img src="assets/images/Crème de Bissap.jpeg" alt="Crème de Bissap"></div>
+                        <div class="card-info"><span>Crème de Bissap</span><span class="price">8€</span></div>
+                    </div>
+                    <div class="menu-card">
+                        <div class="card-img"><img src="assets/images/Fruits de Saison.jpeg" alt="Fruits de Saison"></div>
+                        <div class="card-info"><span>Fruits de Saison</span><span class="price">8€</span></div>
+                     </div>   
+                    </div>
+                    <h3 class="category-title">Boissons</h3>
+                <div class="menu-grid">
+                    <div class="menu-card">
+                        <div class="card-img"><img src="assets/images/Jus de Bissap.jpeg" alt="Jus de Bissap"></div>
+                        <div class="card-info"><span>Jus de Bissap</span><span class="price">6€</span></div>
+                    </div>
+                    <div class="menu-card">
+                        <div class="card-img"><img src="assets/images/Jus de Gingembre.jpeg" alt="Jus de Gingembre"></div>
+                        <div class="card-info"><span>Jus de Gingembre</span><span class="price">6€</span></div>
+                    </div>
+                    <div class="menu-card">
+                        <div class="card-img"><img src="assets/images/Bouye (Jus de Baobab).jpeg" alt="Bouye (Jus de Baobab)"></div>
+                        <div class="card-info"><span>Bouye (Jus de Baobab)</span><span class="price">8€</span></div>
+                    </div>
+                    <div class="menu-card">
+                        <div class="card-img"><img src="assets/images/Cocktail Maison.jpeg" alt="Cocktail Maison"></div>
+                        <div class="card-info"><span>Cocktail Maison</span><span class="price">12€</span></div>
+                     </div>   
+                    </div>
+                    <div class="menu-footer-box">
+                    <div class="degustation-line">
+                        Menu Dégustation 3 plats : <span class="gold-text">45€</span>
+                    </div>
+                    <div class="degustation-line">
+                        Menu Dégustation 5 plats : <span class="gold-text">65€</span>
+                    </div>
+                    </div>
+                    </div>
+             </div>       
+        </div>
+      <div class="container"></div>
+    </section>
+
+    <section id="specials" class="section">
+      <div class="container"></div>
+    </section>
+
+    <section id="reservation" class="section">
+      <div class="container"></div>
+    </section>
+
+    <section id="gallery" class="section gallery">
+      <div class="container">
+        <h2 class="section-title">Notre Galerie</h2>
+
+        <div class="gallery-grid">
+          <div class="gallery-item">
+            <img src="assets/images/Yassa Poisson .jpeg" alt="Plat Sénégalais 1" />
+          </div>
+
+          <div class="gallery-item">
+            <img src="assets/images/Yassa Poulet.jpeg" alt="Plat Sénégalais 2" />
+          </div>
+
+          <div class="gallery-item">
+            <img src="assets/images/Thiéboudienne.jpeg" alt="Plat Sénégalais 3" />
+          </div>
+
+          <div class="gallery-item">
+            <img src="assets/images/Poisson Braisé.jpeg" alt="Plat Sénégalais 4" />
+          </div>
+
+          <div class="gallery-item">
+            <img src="assets/images/Poulet DG.jpeg" alt="Plat Sénégalais 5" />
+          </div>
+          <div class="gallery-item">
+            <img src="assets/images/Pastels à la Viande.jpeg" alt="Plat Sénégalais 6" />
+          </div>
+          <div class="gallery-item">
+            <img src="assets/images/Pastels au Thon .jpeg" alt="Plat Sénégalais 6" />
+          </div>
+          <div class="gallery-item">
+            <img src="assets/images/Jollof Rice Royal.jpeg" alt="Plat Sénégalais 6" />
+          </div>
+          <div class="gallery-item">
+            <img src="assets/images/Mafé Agneau.jpeg" alt="Plat Sénégalais 6" />
+          </div>
+          <div class="gallery-item">
+            <img src="assets/images/Mafé Poulet.jpeg" alt="Plat Sénégalais 6" />
+          </div>
+          <div class="gallery-item">
+            <img src="assets/images/Crème de Bissap.jpeg" alt="Plat Sénégalais 6" />
+          </div>
+          <div class="gallery-item">
+            <img src="assets/images/Fruits de Saison.jpeg" alt="Plat Sénégalais 6" />
+          </div>
+          <div class="gallery-item">
+            <img src="assets/images/Chakery Vanille.jpeg" alt="Plat Sénégalais 6" />
+          </div>
+          <div class="gallery-item">
+            <img src="assets/images/Cocktail Maison.jpeg" alt="Plat Sénégalais 6" />
+          </div>
+          <div class="gallery-item">
+            <img src="assets/images/Bouye (Jus de Baobab).jpeg" alt="Plat Sénégalais 6" />
+          </div>
+          <div class="gallery-item">
+            <img src="assets/images/Jus de Bissap.jpeg" alt="Plat Sénégalais 6" />
+          </div>
+          <div class="gallery-item">
+            <img src="assets/images/Jus de Gingembre.jpeg" alt="Plat Sénégalais 6" />
+          </div>
+          <div class="gallery-item">
+            <img src="assets/images/Cocktail Maison.jpeg" alt="Plat Sénégalais 6" />
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="testimonials" class="section">
+      <div class="container"></div>
+    </section>
+
+    <section id="contact" class="section">
+      <div class="container"></div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-section">
+                <div class="footer-logo">
+                    <span class="logo-ld">LD</span>
+                    <h3>Le Délice Sénégalais</h3>
+                </div>
+                <p class="footer-description">
+                    L'authenticité africaine sublimée par la haute gastronomie. 
+                    Une expérience culinaire unique qui vous transportera au cœur du Sénégal.
+                </p>
+            </div>
+
+            <div class="footer-section">
+                <h4>Liens Rapides</h4>
+                <ul class="footer-links">
+                    <li><a href="#home">Accueil</a></li>
+                    <li><a href="#menu">Notre Menu</a></li>
+                    <li><a href="#specials">Offres Spéciales</a></li>
+                    <li><a href="#reservation">Réservation</a></li>
+                    <li><a href="#gallery">Galerie</a></li>
+                    <li><a href="#testimonials">Témoignages</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-section">
+                <h4>Horaires d'Ouverture</h4>
+                <div class="footer-hours">
+                    <div class="hours-item">
+                        <span class="day">Lundi - Vendredi</span>
+                        <span class="time">11:30 - 22:30</span>
+                    </div>
+                    <div class="hours-item">
+                        <span class="day">Samedi</span>
+                        <span class="time">12:00 - 23:00</span>
+                    </div>
+                    <div class="hours-item">
+                        <span class="day">Dimanche</span>
+                        <span class="time">12:00 - 22:00</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="footer-section">
+                <h4>Suivez-nous</h4>
+                <div class="social-links">
+                    <a href="#" class="social-link">
+                        <i class="fab fa-facebook-f"></i>
+                    </a>
+                    <a href="#" class="social-link">
+                        <i class="fab fa-instagram"></i>
+                    </a>
+                    <a href="#" class="social-link">
+                        <i class="fab fa-twitter"></i>
+                    </a>
+                    <a href="#" class="social-link">
+                        <i class="fab fa-linkedin-in"></i>
+                    </a>
+                </div>
+                <div class="footer-contact">
+                    <div class="contact-item">
+                        <i class="fas fa-map-marker-alt"></i>
+                        <span>123 Avenue des Arts, Dakar, Sénégal</span>
+                    </div>
+                    <div class="contact-item">
+                        <i class="fas fa-phone"></i>
+                        <span>+221 33 123 45 67</span>
+                    </div>
+                    <div class="contact-item">
+                        <i class="fas fa-envelope"></i>
+                        <span>contact@ledelicesenegalais.sn</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="footer-bottom">
+            <div class="footer-bottom-content">
+                <p>&copy; 2024 Le Délice Sénégalais. Tous droits réservés.</p>
+                <div class="footer-bottom-links">
+                    <a href="#">Mentions légales</a>
+                    <a href="#">Politique de confidentialité</a>
+                    <a href="#">CGV</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+    
+    <script src="js/script.js"></script>
+  </body>
+</html>
+<!doctype html>
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Le Délice Sénégalais</title>
     <link rel="stylesheet" href="css/style.css" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
