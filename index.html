@@ -1,640 +1,1092 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="fr">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Le Délice Sénégalais</title>
-    <link rel="stylesheet" href="css/style.css"/>
-    <link rel="stylesheet" href="css/footer.css"/>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet"/>
-  </head>
-  <body>
-    <!--Développer le Header complet (image, overlay, titre, boutons CTA)-->
-    <header class="header" id="home">
-      <div class="header-overlay"></div>
-      <div class="cardtext-bg-dark">
-        <!-- Image de fond du header et ajout du texte sur l'image -->
-        <img
-          src="assets/images/Page_d'accueil.jpeg"
-          class="card-img"
-          alt="Image du restaurant"
-        />
-        <!-- Navbar -->
-        <nav class="navbar">
-          <div class="nav-container">
-            <div class="nav-logo">
-              <a href="#home" class="logo-link">
-                <span class="logo-ld">LD</span> Le Délice Sénégalais
-              </a>
+    
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <!-- CSS Custom -->
+    <link rel="stylesheet" href="css/style.css">
+    <style>
+        /* ===== NAVBAR STYLES ===== */
+        .navbar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 50;
+            transition: all 0.3s ease;
+            background: rgba(0, 0, 0, 0.8);
+            backdrop-filter: blur(10px);
+        }
+        
+        .navbar.scrolled {
+            background: rgba(0, 0, 0, 0.95);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+        }
+        
+        .navbar-container {
+            max-width: 1280px;
+            margin: 0 auto;
+            padding: 0 16px;
+        }
+        
+        .navbar-content {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            height: 80px;
+        }
+        
+        /* ===== LOGO ===== */
+        .navbar-logo {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+        
+        .navbar-logo-circle {
+            width: 48px;
+            height: 48px;
+            background: linear-gradient(135deg, #D4AF37, #F4D03F);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .navbar-logo-circle span {
+            color: #000000;
+            font-weight: 700;
+            font-size: 20px;
+            font-family: 'Poppins', sans-serif;
+        }
+        
+        .navbar-logo-text h1 {
+            font-size: 20px;
+            font-weight: 700;
+            color: #D4AF37;
+            margin: 0;
+            font-family: 'Poppins', sans-serif;
+        }
+        
+        @media (min-width: 1024px) {
+            .navbar-logo-text h1 {
+                font-size: 24px;
+            }
+        }
+        
+        /* ===== NAVIGATION LINKS ===== */
+        .navbar-nav {
+            display: none;
+            align-items: center;
+            gap: 32px;
+        }
+        
+        @media (min-width: 1024px) {
+            .navbar-nav {
+                display: flex;
+            }
+        }
+        
+        .navbar-nav-link {
+            color: #FFFFFF;
+            text-decoration: none;
+            font-size: 14px;
+            font-weight: 500;
+            font-family: 'Poppins', sans-serif;
+            transition: color 0.3s ease;
+            cursor: pointer;
+            background: none;
+            border: none;
+            padding: 0;
+        }
+        
+        .navbar-nav-link:hover {
+            color: #D4AF37;
+        }
+        
+        /* ===== MOBILE MENU BUTTON ===== */
+        .navbar-mobile-toggle {
+            display: block;
+            color: #FFFFFF;
+            background: none;
+            border: none;
+            cursor: pointer;
+            transition: color 0.3s ease;
+            padding: 8px;
+        }
+        
+        @media (min-width: 1024px) {
+            .navbar-mobile-toggle {
+                display: none;
+            }
+        }
+        
+        .navbar-mobile-toggle:hover {
+            color: #D4AF37;
+        }
+        
+        .navbar-mobile-toggle svg {
+            width: 28px;
+            height: 28px;
+        }
+        
+        /* ===== MOBILE MENU ===== */
+        .navbar-mobile-menu {
+            display: none;
+            background: rgba(0, 0, 0, 0.95);
+            border-top: 1px solid rgba(212, 175, 55, 0.2);
+            overflow: hidden;
+            max-height: 0;
+            transition: all 0.3s ease;
+        }
+        
+        @media (min-width: 1024px) {
+            .navbar-mobile-menu {
+                display: none !important;
+            }
+        }
+        
+        .navbar-mobile-menu.active {
+            display: block;
+            max-height: 500px;
+        }
+        
+        .navbar-mobile-menu-content {
+            padding: 16px;
+        }
+        
+        .navbar-mobile-menu-link {
+            display: block;
+            width: 100%;
+            text-align: left;
+            color: #FFFFFF;
+            text-decoration: none;
+            font-size: 16px;
+            font-weight: 500;
+            font-family: 'Poppins', sans-serif;
+            transition: all 0.3s ease;
+            padding: 8px 16px;
+            border-radius: 8px;
+            background: none;
+            border: none;
+            cursor: pointer;
+        }
+        
+        .navbar-mobile-menu-link:hover {
+            color: #D4AF37;
+            background: rgba(212, 175, 55, 0.1);
+        }
+        
+        /* ===== ANIMATIONS ===== */
+        @keyframes fadeInDown {
+            from {
+                opacity: 0;
+                transform: translateY(-20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        .navbar-mobile-menu.active .navbar-mobile-menu-content {
+            animation: fadeInDown 0.3s ease;
+        }
+        
+        /* ===== RESPONSIVE ===== */
+        @media (max-width: 640px) {
+            .navbar-container {
+                padding: 0 16px;
+            }
+            
+            .navbar-logo-text h1 {
+                font-size: 18px;
+            }
+            
+            .navbar-mobile-toggle svg {
+                width: 24px;
+                height: 24px;
+            }
+        }
+    </style>
+</head>
+<body>
+    
+    <!-- NAVBAR -->
+<nav class="navbar" id="navbar">
+    <div class="navbar-container">
+        <div class="navbar-content">
+            <!-- Logo -->
+            <div class="navbar-logo">
+                <div class="navbar-logo-circle">
+                    <span>LD</span>
+                </div>
+                <div class="navbar-logo-text">
+                    <h1>Le Délice Sénégalais</h1>
+                </div>
+            </div>
+
+            <!-- Desktop Navigation -->
+            <div class="navbar-nav">
+                <button class="navbar-nav-link" onclick="scrollToSection('#home')">Accueil</button>
+                <button class="navbar-nav-link" onclick="scrollToSection('#menu')">Notre Menu</button>
+                <button class="navbar-nav-link" onclick="scrollToSection('#gallery')">Galerie</button>
+                <button class="navbar-nav-link" onclick="scrollToSection('#reservation')">Réservation</button>
+                <button class="navbar-nav-link" onclick="scrollToSection('#contact')">Contact</button>
+            </div>
+
+            <!-- Mobile Menu Button -->
+            <button class="navbar-mobile-toggle" id="mobileToggle" onclick="toggleMobileMenu()">
+                <svg id="menuIcon" class="menu-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+                </svg>
+                <svg id="closeIcon" class="close-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24" style="display: none;">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+                </svg>
+            </button>
+        </div>
+    </div>
+
+    <!-- Mobile Menu -->
+    <div class="navbar-mobile-menu" id="mobileMenu">
+        <div class="navbar-mobile-menu-content">
+            <button class="navbar-mobile-menu-link" onclick="scrollToSection('#home')">Accueil</button>
+            <button class="navbar-mobile-menu-link" onclick="scrollToSection('#menu')">Notre Menu</button>
+            <button class="navbar-mobile-menu-link" onclick="scrollToSection('#gallery')">Galerie</button>
+            <button class="navbar-mobile-menu-link" onclick="scrollToSection('#reservation')">Réservation</button>
+            <button class="navbar-mobile-menu-link" onclick="scrollToSection('#contact')">Contact</button>
+        </div>
+    </div>
+</nav>
+
+    <!-- HERO SECTION -->
+    <section class="hero-section" id="home">
+        <div class="hero-overlay"></div>
+        <div class="container h-100">
+            <div class="row h-100 align-items-center">
+                <div class="col-lg-12 text-center">
+                    <div class="hero-content">
+                        <h1>Le Délice Sénégalais</h1>
+                        <h2 class="hero-subtitle">L'Art de la Gastronomie Africaine</h2>
+                        <p class="hero-description">Découvrez une expérience culinaire unique où tradition et innovation se rencontrent</p>
+                        <div class="hero-buttons">
+                            <a href="#menu" class="btn btn-hero-primary">Découvrir le Menu</a>
+                            <a href="#reservation" class="btn btn-hero-secondary">Réserver une Table</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- MENU SECTION -->
+    <section class="menu-section" id="menu">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12 text-center mb-5">
+                    <h2 class="section-title">Notre Menu <span class="highlight">Signature</span></h2>
+                    <p class="section-subtitle">Une sélection de nos créations culinaires</p>
+                </div>
             </div>
             
-            <!-- Menu Desktop -->
-            <ul class="nav-menu">
-              <li class="nav-item">
-                <a href="#home" class="nav-link">Accueil</a>
-              </li>
-              <li class="nav-item">
-                <a href="#menu" class="nav-link">Notre Menu</a>
-              </li>
-              <li class="nav-item">
-                <a href="#specials" class="nav-link">Offres spéciales</a>
-              </li>
-              <li class="nav-item">
-                <a href="#reservation" class="nav-link">Réservation</a>
-              </li>
-              <li class="nav-item">
-                <a href="#gallery" class="nav-link">Galerie</a>
-              </li>
-              <li class="nav-item">
-                <a href="#testimonials" class="nav-link">Témoignages</a>
-              </li>
-              <li class="nav-item">
-                <a href="#contact" class="nav-link">Contact</a>
-              </li>
-            </ul>
-
-            <!-- Hamburger Menu -->
-            <div class="hamburger">
-              <span class="bar"></span>
-              <span class="bar"></span>
-              <span class="bar"></span>
-            </div>
-          </div>
-        </nav>
-        <div class="contenus_texte">
-          <h5 class="nom_restaurant" aria-label="Nom du restaurant">
-            Le Délice <br /><span style="color: #ffd700">Sénégalais</span>
-          </h5>
-          <div class="slogan_boutons">
-            <h1 class="slogan">
-              L'authenticité africaine sublimée par la haute gastronomie
-            </h1>
-            <div class="header-buttons">
-              <a href="#menu" class="btn btn-primary">Réserver une Table</a>
-              <a href="#reservation" class="btn btn-secondary"
-                >Commander maintenant</a
-              >
-              <div
-                class="mouse-container"
-                aria-label="Icône souris animée"
-                role="img"
-              >
-                <div class="mouse"><div class="wheel"></div></div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </header>
-    <link rel="stylesheet" href="css/style.css" />
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
-      rel="stylesheet"
-    />
-  </head>
-  <body>
-    <!-- Navbar -->
-    <nav class="navbar">
-      <div class="nav-container">
-        <div class="nav-logo">
-          <a href="#home" class="logo-link">
-            <span class="logo-ld">LD</span> Le Délice Sénégalais
-          </a>
-        </div>
-
-        <!-- Menu Desktop -->
-        <ul class="nav-menu">
-          <li class="nav-item">
-            <a href="index.html"nav-link">Accueil</a>
-          </li>
-          <li class="nav-item">
-            <a href="#menu" class="nav-link">Notre Menu</a>
-          </li>
-          <li class="nav-item">
-            <a href="Offres spéciales.html" nav-link>Offres spéciales</a>
-          </li>
-          <li class="nav-item">
-            <a href="#reservation" class="nav-link">Réservation</a>
-          </li>
-          <li class="nav-item">
-            <a href="#gallery" class="nav-link">Galerie</a>
-          </li>
-          <li class="nav-item">
-            <a href="#testimonials" class="nav-link">Témoignages</a>
-          </li>
-          <li class="nav-item">
-            <a href="#contact" class="nav-link">Contact</a>
-          </li>
-        </ul>
-
-        <!-- Hamburger Menu -->
-        <div class="hamburger">
-          <span class="bar"></span>
-          <span class="bar"></span>
-          <span class="bar"></span>
-        </div>
-      </div>
-    </nav>
-
-    <!-- Sections placeholder -->
-    <section id="home" class="section">
-      <div class="container"></div>
-    </section>
-
-    <section id="menu" class="section">
-            <div class="menu-overlay" id="menu-modal">
-             <div class="menu-container">   
-            <div class="menu-header">
-                <h2>Menu Complet</h2>
-                <button class="close-btn" id="close-menu">&times;</button>
+            <div class="menu-grid">
+                <div class="menu-card">
+                    <div class="menu-card-image">
+                        <img src="assets/images/Thiéboudienne.jpeg" alt="Thiéboudienne">
+                    </div>
+                    <div class="menu-card-content">
+                        <h3 class="menu-card-title">Thiéboudienne</h3>
+                        <p class="menu-card-description">Riz au poisson traditionnel avec légumes</p>
+                        <div class="menu-card-price">6 500 FCFA</div>
+                    </div>
                 </div>
-                <div class="menu-body">
-                <h3 class="category-title">Entrées</h3>
-                <div class="menu-grid">
-                    <div class="menu-card">
-                        <div class="card-img"><img src="assets/images/Pastels au Thon .jpeg" alt="Pastels au Thon"></div>
-                        <div class="card-info"><span>Pastels au Thon</span><span class="price">12€</span></div>
+                
+                <div class="menu-card">
+                    <div class="menu-card-image">
+                        <img src="assets/images/Yassa Poulet.jpeg" alt="Yassa Poulet">
                     </div>
-                    <div class="menu-card">
-                        <div class="card-img"><img src="assets/images/pastels à la viande.jpeg" alt="Pastels à la Viande"></div>
-                        <div class="card-info"><span>Pastels à la Viande</span><span class="price">12€</span></div>
+                    <div class="menu-card-content">
+                        <h3 class="menu-card-title">Yassa Poulet</h3>
+                        <p class="menu-card-description">Poulet mariné aux oignons et citron</p>
+                        <div class="menu-card-price">5 000 FCFA</div>
                     </div>
-                    <div class="menu-card">
-                        <div class="card-img"><img src="assets/images/Accras de Morue.jpeg" alt="Accras de Morue"></div>
-                        <div class="card-info"><span>Accras de Morue</span><span class="price">14€</span></div>
-                    </div>
-                    <div class="menu-card">
-                        <div class="card-img"><img src="assets/images/Salade Niébé.jpeg" alt="Salade Niébé"></div>
-                        <div class="card-info"><span>Salade Niébé</span><span class="price">10€</span></div>
-                      </div>  
-                    </div>
-                    <h3 class="category-title">Plats Principaux</h3>
-                <div class="menu-grid">
-                    <div class="menu-card">
-                        <div class="card-img"><img src="assets/images/Thiéboudienne.jpeg" alt="Thiéboudienne"></div>
-                        <div class="card-info"><span>Thiéboudienne (Riz au Poisson)</span><span class="price">28€</span></div>
-                    </div>
-                    <div class="menu-card">
-                        <div class="card-img"><img src="assets/images/Yassa Poulet.jpeg" alt="Yassa Poulet"></div>
-                        <div class="card-info"><span>Yassa Poulet</span><span class="price">24€</span></div>
-                    </div>
-                    <div class="menu-card">
-                        <div class="card-img"><img src="assets/images/Mafé Agneau.jpeg" alt="Mafé Agneau"></div>
-                        <div class="card-info"><span>Mafé Agneau</span><span class="price">30€</span></div>
-                    </div>
-                    <div class="menu-card">
-                        <div class="card-img"><img src="assets/images/Yassa Poisson.jpeg" alt="Yassa Poisson"></div>
-                        <div class="card-info"><span>Yassa Poisson</span><span class="price">26€</span></div>
-                    </div>
-                    <div class="menu-card">
-                        <div class="card-img"><img src="assets/images/Mafé Poulet.jpeg" alt="Mafé Poulet"></div>
-                        <div class="card-info"><span>Mafé Poulet</span><span class="price">24€</span></div>
-                    </div>
-                    <div class="menu-card">
-                        <div class="card-img"><img src="assets/images/Jollof Rice Royal.jpeg" alt="Jollof Rice Royal"></div>
-                        <div class="card-info"><span>Jollof Rice Royal</span><span class="price">26€</span></div>
-                    </div>
-                    <div class="menu-card">
-                        <div class="card-img"><img src="assets/images/Poulet DG.jpeg" alt="Poulet DG"></div>
-                        <div class="card-info"><span>Poulet DG</span><span class="price">28€</span></div>
-                    </div>
-                    <div class="menu-card">
-                        <div class="card-img"><img src="assets/images/Poisson Braisé.jpeg" alt="Poisson Braisé"></div>
-                        <div class="card-info"><span>Poisson Braisé</span><span class="price">32€</span></div>
-                      </div>  
-                    </div>
-                    <h3 class="category-title">Desserts</h3>
-                <div class="menu-grid">
-                    <div class="menu-card">
-                        <div class="card-img"><img src="assets/images/Thiakry Coco.jpeg" alt="Thiakry Coco"></div>
-                        <div class="card-info"><span>Thiakry Coco</span><span class="price">10€</span></div>
-                    </div>
-                    <div class="menu-card">
-                        <div class="card-img"><img src="assets/images/Chakery Vanille.jpeg" alt="Chakery Vanille"></div>
-                        <div class="card-info"><span>Chakery Vanille</span><span class="price">10€</span></div>
-                    </div>
-                    <div class="menu-card">
-                        <div class="card-img"><img src="assets/images/Crème de Bissap.jpeg" alt="Crème de Bissap"></div>
-                        <div class="card-info"><span>Crème de Bissap</span><span class="price">8€</span></div>
-                    </div>
-                    <div class="menu-card">
-                        <div class="card-img"><img src="assets/images/Fruits de Saison.jpeg" alt="Fruits de Saison"></div>
-                        <div class="card-info"><span>Fruits de Saison</span><span class="price">8€</span></div>
-                     </div>   
-                    </div>
-                    <h3 class="category-title">Boissons</h3>
-                <div class="menu-grid">
-                    <div class="menu-card">
-                        <div class="card-img"><img src="assets/images/Jus de Bissap.jpeg" alt="Jus de Bissap"></div>
-                        <div class="card-info"><span>Jus de Bissap</span><span class="price">6€</span></div>
-                    </div>
-                    <div class="menu-card">
-                        <div class="card-img"><img src="assets/images/Jus de Gingembre.jpeg" alt="Jus de Gingembre"></div>
-                        <div class="card-info"><span>Jus de Gingembre</span><span class="price">6€</span></div>
-                    </div>
-                    <div class="menu-card">
-                        <div class="card-img"><img src="assets/images/Bouye (Jus de Baobab).jpeg" alt="Bouye (Jus de Baobab)"></div>
-                        <div class="card-info"><span>Bouye (Jus de Baobab)</span><span class="price">8€</span></div>
-                    </div>
-                    <div class="menu-card">
-                        <div class="card-img"><img src="assets/images/Cocktail Maison.jpeg" alt="Cocktail Maison"></div>
-                        <div class="card-info"><span>Cocktail Maison</span><span class="price">12€</span></div>
-                     </div>   
-                    </div>
-                    <div class="menu-footer-box">
-                    <div class="degustation-line">
-                        Menu Dégustation 3 plats : <span class="gold-text">45€</span>
-                    </div>
-                    <div class="degustation-line">
-                        Menu Dégustation 5 plats : <span class="gold-text">65€</span>
-                    </div>
-                    </div>
-                    </div>
-             </div>       
-        </div>
-      <div class="container"></div>
-    </section>
-
-    <section id="specials" class="section">
-      <div class="container"></div>
-    </section>
-
-    <section id="reservation" class="section">
-      <div class="container"></div>
-    </section>
-
-    <section id="gallery" class="section gallery">
-      <div class="container">
-        <h2 class="section-title">Notre Galerie</h2>
-
-        <div class="gallery-grid">
-          <div class="gallery-item">
-            <img src="assets/images/Yassa Poisson .jpeg" alt="Plat Sénégalais 1" />
-          </div>
-
-          <div class="gallery-item">
-            <img src="assets/images/Yassa Poulet.jpeg" alt="Plat Sénégalais 2" />
-          </div>
-
-          <div class="gallery-item">
-            <img src="assets/images/Thiéboudienne.jpeg" alt="Plat Sénégalais 3" />
-          </div>
-
-          <div class="gallery-item">
-            <img src="assets/images/Poisson Braisé.jpeg" alt="Plat Sénégalais 4" />
-          </div>
-
-          <div class="gallery-item">
-            <img src="assets/images/Poulet DG.jpeg" alt="Plat Sénégalais 5" />
-          </div>
-          <div class="gallery-item">
-            <img src="assets/images/Pastels à la Viande.jpeg" alt="Plat Sénégalais 6" />
-          </div>
-          <div class="gallery-item">
-            <img src="assets/images/Pastels au Thon .jpeg" alt="Plat Sénégalais 6" />
-          </div>
-          <div class="gallery-item">
-            <img src="assets/images/Jollof Rice Royal.jpeg" alt="Plat Sénégalais 6" />
-          </div>
-          <div class="gallery-item">
-            <img src="assets/images/Mafé Agneau.jpeg" alt="Plat Sénégalais 6" />
-          </div>
-          <div class="gallery-item">
-            <img src="assets/images/Mafé Poulet.jpeg" alt="Plat Sénégalais 6" />
-          </div>
-          <div class="gallery-item">
-            <img src="assets/images/Crème de Bissap.jpeg" alt="Plat Sénégalais 6" />
-          </div>
-          <div class="gallery-item">
-            <img src="assets/images/Fruits de Saison.jpeg" alt="Plat Sénégalais 6" />
-          </div>
-          <div class="gallery-item">
-            <img src="assets/images/Chakery Vanille.jpeg" alt="Plat Sénégalais 6" />
-          </div>
-          <div class="gallery-item">
-            <img src="assets/images/Cocktail Maison.jpeg" alt="Plat Sénégalais 6" />
-          </div>
-          <div class="gallery-item">
-            <img src="assets/images/Bouye (Jus de Baobab).jpeg" alt="Plat Sénégalais 6" />
-          </div>
-          <div class="gallery-item">
-            <img src="assets/images/Jus de Bissap.jpeg" alt="Plat Sénégalais 6" />
-          </div>
-          <div class="gallery-item">
-            <img src="assets/images/Jus de Gingembre.jpeg" alt="Plat Sénégalais 6" />
-          </div>
-          <div class="gallery-item">
-            <img src="assets/images/Cocktail Maison.jpeg" alt="Plat Sénégalais 6" />
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <section id="testimonials" class="section">
-      <div class="container"></div>
-    </section>
-
-    <section id="contact" class="section">
-      <div class="container"></div>
-    </section>
-
-    <!-- Footer -->
-    <footer class="footer">
-        <div class="footer-content">
-            <div class="footer-section">
-                <div class="footer-logo">
-                    <span class="logo-ld">LD</span>
-                    <h3>Le Délice Sénégalais</h3>
                 </div>
-                <p class="footer-description">
-                    L'authenticité africaine sublimée par la haute gastronomie. 
-                    Une expérience culinaire unique qui vous transportera au cœur du Sénégal.
-                </p>
-            </div>
-
-            <div class="footer-section">
-                <h4>Liens Rapides</h4>
-                <ul class="footer-links">
-                    <li><a href="#home">Accueil</a></li>
-                    <li><a href="#menu">Notre Menu</a></li>
-                    <li><a href="#specials">Offres Spéciales</a></li>
-                    <li><a href="#reservation">Réservation</a></li>
-                    <li><a href="#gallery">Galerie</a></li>
-                    <li><a href="#testimonials">Témoignages</a></li>
-                    <li><a href="#contact">Contact</a></li>
-                </ul>
-            </div>
-
-            <div class="footer-section">
-                <h4>Horaires d'Ouverture</h4>
-                <div class="footer-hours">
-                    <div class="hours-item">
-                        <span class="day">Lundi - Vendredi</span>
-                        <span class="time">11:30 - 22:30</span>
+                
+                <div class="menu-card">
+                    <div class="menu-card-image">
+                        <img src="assets/images/Mafé Poulet.jpeg" alt="Mafé Poulet">
                     </div>
-                    <div class="hours-item">
-                        <span class="day">Samedi</span>
-                        <span class="time">12:00 - 23:00</span>
+                    <div class="menu-card-content">
+                        <h3 class="menu-card-title">Mafé Poulet</h3>
+                        <p class="menu-card-description">Ragoût d'arachide au poulet tendre</p>
+                        <div class="menu-card-price">5 500 FCFA</div>
                     </div>
-                    <div class="hours-item">
-                        <span class="day">Dimanche</span>
-                        <span class="time">12:00 - 22:00</span>
+                </div>
+                
+                <div class="menu-card">
+                    <div class="menu-card-image">
+                        <img src="assets/images/Poisson Braisé.jpeg" alt="Poisson Braisé">
+                    </div>
+                    <div class="menu-card-content">
+                        <h3 class="menu-card-title">Poisson Braisé</h3>
+                        <p class="menu-card-description">Poisson frais grillé aux épices</p>
+                        <div class="menu-card-price">7 000 FCFA</div>
+                    </div>
+                </div>
+                
+                <div class="menu-card">
+                    <div class="menu-card-image">
+                        <img src="assets/images/Poulet DG.jpeg" alt="Poulet DG">
+                    </div>
+                    <div class="menu-card-content">
+                        <h3 class="menu-card-title">Poulet DG</h3>
+                        <p class="menu-card-description">Spécialité créative au poulet</p>
+                        <div class="menu-card-price">6 000 FCFA</div>
+                    </div>
+                </div>
+                
+                <div class="menu-card">
+                    <div class="menu-card-image">
+                        <img src="assets/images/Jollof Rice Royal.jpeg" alt="Jollof Rice Royal">
+                    </div>
+                    <div class="menu-card-content">
+                        <h3 class="menu-card-title">Jollof Rice Royal</h3>
+                        <p class="menu-card-description">Riz jollof aux fruits de mer</p>
+                        <div class="menu-card-price">7 500 FCFA</div>
                     </div>
                 </div>
             </div>
+            
+            <div class="menu-view-more">
+                <button class="btn btn-menu-view" onclick="openMenuModal()">Voir le menu complet</button>
+            </div>
+        </div>
+    </section>
 
-            <div class="footer-section">
-                <h4>Suivez-nous</h4>
-                <div class="social-links">
-                    <a href="#" class="social-link">
-                        <i class="fab fa-facebook-f"></i>
-                    </a>
-                    <a href="#" class="social-link">
-                        <i class="fab fa-instagram"></i>
-                    </a>
-                    <a href="#" class="social-link">
-                        <i class="fab fa-twitter"></i>
-                    </a>
-                    <a href="#" class="social-link">
-                        <i class="fab fa-linkedin-in"></i>
-                    </a>
+    <!-- MENU MODAL -->
+    <div class="menu-modal" id="menuModal">
+        <div class="menu-modal-content">
+            <div class="menu-modal-header">
+                <h3 class="menu-modal-title">Menu Complet</h3>
+                <button class="menu-modal-close" onclick="closeMenuModal()">&times;</button>
+            </div>
+            <div class="menu-modal-body">
+                <!-- Entrées -->
+                <div class="menu-category">
+                    <h4 class="menu-category-title">Entrées</h4>
+                    <div class="menu-items-grid">
+                        <div class="menu-item">
+                            <div class="menu-item-image">
+                                <img src="assets/images/Pastels au Thon .jpeg" alt="Pastels Thon">
+                            </div>
+                            <div class="menu-item-info">
+                                <h5 class="menu-item-name">Pastels au Thon</h5>
+                                <div class="menu-item-price">3 500 FCFA</div>
+                            </div>
+                        </div>
+                        <div class="menu-item">
+                            <div class="menu-item-image">
+                                <img src="assets/images/Pastels à la Viande.jpeg" alt="Pastels Viande">
+                            </div>
+                            <div class="menu-item-info">
+                                <h5 class="menu-item-name">Pastels à la Viande</h5>
+                                <div class="menu-item-price">3 000 FCFA</div>
+                            </div>
+                        </div>
+                        <div class="menu-item">
+                            <div class="menu-item-image">
+                                <img src="assets/images/Accras de Morue.jpeg" alt="Accras">
+                            </div>
+                            <div class="menu-item-info">
+                                <h5 class="menu-item-name">Accras de Morue</h5>
+                                <div class="menu-item-price">2 500 FCFA</div>
+                            </div>
+                        </div>
+                        <div class="menu-item">
+                            <div class="menu-item-image">
+                                <img src="assets/images/Salade Niébé.jpeg" alt="Salade">
+                            </div>
+                            <div class="menu-item-info">
+                                <h5 class="menu-item-name">Salade Niébé</h5>
+                                <div class="menu-item-price">2 000 FCFA</div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
-                <div class="footer-contact">
-                    <div class="contact-item">
-                        <i class="fas fa-map-marker-alt"></i>
-                        <span>123 Avenue des Arts, Dakar, Sénégal</span>
+                
+                <!-- Plats Principaux -->
+                <div class="menu-category">
+                    <h4 class="menu-category-title">Plats Principaux</h4>
+                    <div class="menu-items-grid">
+                        <div class="menu-item">
+                            <div class="menu-item-image">
+                                <img src="assets/images/Thiéboudienne.jpeg" alt="Thiéboudienne">
+                            </div>
+                            <div class="menu-item-info">
+                                <h5 class="menu-item-name">Thiéboudienne</h5>
+                                <div class="menu-item-price">6 500 FCFA</div>
+                            </div>
+                        </div>
+                        <div class="menu-item">
+                            <div class="menu-item-image">
+                                <img src="assets/images/Yassa Poulet.jpeg" alt="Yassa Poulet">
+                            </div>
+                            <div class="menu-item-info">
+                                <h5 class="menu-item-name">Yassa Poulet</h5>
+                                <div class="menu-item-price">5 000 FCFA</div>
+                            </div>
+                        </div>
+                        <div class="menu-item">
+                            <div class="menu-item-image">
+                                <img src="assets/images/Yassa Poisson.jpeg" alt="Yassa Poisson">
+                            </div>
+                            <div class="menu-item-info">
+                                <h5 class="menu-item-name">Yassa Poisson</h5>
+                                <div class="menu-item-price">5 500 FCFA</div>
+                            </div>
+                        </div>
+                        <div class="menu-item">
+                            <div class="menu-item-image">
+                                <img src="assets/images/Mafé Agneau.jpeg" alt="Mafé Agneau">
+                            </div>
+                            <div class="menu-item-info">
+                                <h5 class="menu-item-name">Mafé Agneau</h5>
+                                <div class="menu-item-price">7 000 FCFA</div>
+                            </div>
+                        </div>
+                        <div class="menu-item">
+                            <div class="menu-item-image">
+                                <img src="assets/images/Mafé Poulet.jpeg" alt="Mafé Poulet">
+                            </div>
+                            <div class="menu-item-info">
+                                <h5 class="menu-item-name">Mafé Poulet</h5>
+                                <div class="menu-item-price">5 500 FCFA</div>
+                            </div>
+                        </div>
+                        <div class="menu-item">
+                            <div class="menu-item-image">
+                                <img src="assets/images/Jollof Rice Royal.jpeg" alt="Jollof Rice">
+                            </div>
+                            <div class="menu-item-info">
+                                <h5 class="menu-item-name">Jollof Rice Royal</h5>
+                                <div class="menu-item-price">7 500 FCFA</div>
+                            </div>
+                        </div>
+                        <div class="menu-item">
+                            <div class="menu-item-image">
+                                <img src="assets/images/Poulet DG.jpeg" alt="Poulet DG">
+                            </div>
+                            <div class="menu-item-info">
+                                <h5 class="menu-item-name">Poulet DG</h5>
+                                <div class="menu-item-price">6 000 FCFA</div>
+                            </div>
+                        </div>
+                        <div class="menu-item">
+                            <div class="menu-item-image">
+                                <img src="assets/images/Poisson Braisé.jpeg" alt="Poisson Braisé">
+                            </div>
+                            <div class="menu-item-info">
+                                <h5 class="menu-item-name">Poisson Braisé</h5>
+                                <div class="menu-item-price">7 000 FCFA</div>
+                            </div>
+                        </div>
                     </div>
-                    <div class="contact-item">
-                        <i class="fas fa-phone"></i>
-                        <span>+221 33 123 45 67</span>
+                </div>
+                
+                <!-- Desserts -->
+                <div class="menu-category">
+                    <h4 class="menu-category-title">Desserts</h4>
+                    <div class="menu-items-grid">
+                        <div class="menu-item">
+                            <div class="menu-item-image">
+                                <img src="assets/images/Thiakry Coco.jpeg" alt="Thiakry">
+                            </div>
+                            <div class="menu-item-info">
+                                <h5 class="menu-item-name">Thiakry Coco</h5>
+                                <div class="menu-item-price">2 500 FCFA</div>
+                            </div>
+                        </div>
+                        <div class="menu-item">
+                            <div class="menu-item-image">
+                                <img src="assets/images/Chakery Vanille.jpeg" alt="Chakery">
+                            </div>
+                            <div class="menu-item-info">
+                                <h5 class="menu-item-name">Chakery Vanille</h5>
+                                <div class="menu-item-price">2 000 FCFA</div>
+                            </div>
+                        </div>
+                        <div class="menu-item">
+                            <div class="menu-item-image">
+                                <img src="assets/images/Crème de Bissap.jpeg" alt="Crème Bissap">
+                            </div>
+                            <div class="menu-item-info">
+                                <h5 class="menu-item-name">Crème de Bissap</h5>
+                                <div class="menu-item-price">2 500 FCFA</div>
+                            </div>
+                        </div>
+                        <div class="menu-item">
+                            <div class="menu-item-image">
+                                <img src="assets/images/Fruits de Saison.jpeg" alt="Fruits">
+                            </div>
+                            <div class="menu-item-info">
+                                <h5 class="menu-item-name">Fruits de Saison</h5>
+                                <div class="menu-item-price">3 000 FCFA</div>
+                            </div>
+                        </div>
                     </div>
-                    <div class="contact-item">
-                        <i class="fas fa-envelope"></i>
-                        <span>contact@ledelicesenegalais.sn</span>
+                </div>
+                
+                <!-- Boissons -->
+                <div class="menu-category">
+                    <h4 class="menu-category-title">Boissons</h4>
+                    <div class="menu-items-grid">
+                        <div class="menu-item">
+                            <div class="menu-item-image">
+                                <img src="assets/images/Jus de Bissap.jpeg" alt="Bissap">
+                            </div>
+                            <div class="menu-item-info">
+                                <h5 class="menu-item-name">Jus de Bissap</h5>
+                                <div class="menu-item-price">1 500 FCFA</div>
+                            </div>
+                        </div>
+                        <div class="menu-item">
+                            <div class="menu-item-image">
+                                <img src="assets/images/Jus de Gingembre.jpeg" alt="Gingembre">
+                            </div>
+                            <div class="menu-item-info">
+                                <h5 class="menu-item-name">Jus de Gingembre</h5>
+                                <div class="menu-item-price">1 500 FCFA</div>
+                            </div>
+                        </div>
+                        <div class="menu-item">
+                            <div class="menu-item-image">
+                                <img src="assets/images/Bouye (Jus de Baobab).jpeg" alt="Baobab">
+                            </div>
+                            <div class="menu-item-info">
+                                <h5 class="menu-item-name">Jus de Baobab</h5>
+                                <div class="menu-item-price">2 000 FCFA</div>
+                            </div>
+                        </div>
+                        <div class="menu-item">
+                            <div class="menu-item-image">
+                                <img src="assets/images/Cocktail Maison.jpeg" alt="Cocktail">
+                            </div>
+                            <div class="menu-item-info">
+                                <h5 class="menu-item-name">Cocktail Maison</h5>
+                                <div class="menu-item-price">3 500 FCFA</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="menu-modal-footer">
+                <div class="menu-tasting">
+                    <div class="tasting-item">
+                        <div class="tasting-price">45€</div>
+                        <div class="tasting-title">Menu Dégustation</div>
+                    </div>
+                    <div class="tasting-item">
+                        <div class="tasting-price">65€</div>
+                        <div class="tasting-title">Menu Premium</div>
                     </div>
                 </div>
             </div>
         </div>
+    </div>
 
-        <div class="footer-bottom">
-            <div class="footer-bottom-content">
-                <p>&copy; 2024 Le Délice Sénégalais. Tous droits réservés.</p>
+    <!-- SPECIALS SECTION -->
+    <section class="specials-section" id="specials">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12 text-center mb-5">
+                    <h2 class="section-title">Offres Spéciales <span class="highlight">Exclusives</span></h2>
+                    <p class="section-subtitle">Découvrez nos promotions du moment</p>
+                </div>
+            </div>
+            
+            <div class="specials-grid">
+                <div class="special-card">
+                    <div class="special-badge">-20%</div>
+                    <div class="special-content">
+                        <h3 class="special-title">Menu Duo</h3>
+                        <p class="special-description">2 plats principaux + 2 boissons pour partager</p>
+                        <div class="special-price">
+                            <span class="special-price-original">12 500 FCFA</span>
+                            <span class="special-price-current">10 000 FCFA</span>
+                        </div>
+                        <p class="special-conditions">Valable du lundi au jeudi</p>
+                    </div>
+                </div>
+                
+                <div class="special-card">
+                    <div class="special-badge">Nouveauté</div>
+                    <div class="special-content">
+                        <h3 class="special-title">Soirée Sénégalaise</h3>
+                        <p class="special-description">Menu complet + animation musicale live</p>
+                        <div class="special-price">
+                            <span class="special-price-current">15 000 FCFA</span>
+                            <span class="special-conditions">/personne</span>
+                        </div>
+                        <p class="special-conditions">Samedi soir uniquement</p>
+                    </div>
+                </div>
+                
+                <div class="special-card">
+                    <div class="special-badge">Offre limitée</div>
+                    <div class="special-content">
+                        <h3 class="special-title">Brunch Dimanche</h3>
+                        <p class="special-description">Buffet continental et spécialités sénégalaises</p>
+                        <div class="special-price">
+                            <span class="special-price-current">7 500 FCFA</span>
+                            <span class="special-conditions">/personne</span>
+                        </div>
+                        <p class="special-conditions">Réservation obligatoire</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- GALLERY SECTION -->
+    <section class="gallery-section" id="gallery">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12 text-center mb-5">
+                    <h2 class="section-title">Galerie <span class="highlight">Photos</span></h2>
+                    <p class="section-subtitle">Découvrez l'ambiance de notre restaurant</p>
+                </div>
+            </div>
+            
+            <div class="gallery-grid">
+                <div class="gallery-item">
+                    <img src="assets/images/Thiéboudienne.jpeg" alt="Thiéboudienne">
+                </div>
+                <div class="gallery-item">
+                    <img src="assets/images/Yassa Poulet.jpeg" alt="Yassa Poulet">
+                </div>
+                <div class="gallery-item">
+                    <img src="assets/images/Mafé Poulet.jpeg" alt="Mafé Poulet">
+                </div>
+                <div class="gallery-item">
+                    <img src="assets/images/Poisson Braisé.jpeg" alt="Poisson Braisé">
+                </div>
+                <div class="gallery-item">
+                    <img src="assets/images/Poulet DG.jpeg" alt="Poulet DG">
+                </div>
+                <div class="gallery-item">
+                    <img src="assets/images/Jollof Rice Royal.jpeg" alt="Jollof Rice Royal">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- RESERVATION SECTION -->
+    <section class="reservation-section" id="reservation">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12 text-center mb-5">
+                    <h2 class="section-title">Réservation <span class="highlight">Votre Table</span></h2>
+                    <p class="section-subtitle">Réservez votre table en ligne</p>
+                </div>
+            </div>
+            
+            <div class="row">
+                <div class="col-lg-8 mx-auto">
+                    <form class="reservation-form" id="reservationForm">
+                        <div class="row">
+                            <div class="col-md-6 mb-3">
+                                <label for="nom" class="form-label">Nom complet</label>
+                                <input type="text" class="form-control" id="nom" required>
+                            </div>
+                            <div class="col-md-6 mb-3">
+                                <label for="email" class="form-label">Email</label>
+                                <input type="email" class="form-control" id="email" required>
+                            </div>
+                        </div>
+                        
+                        <div class="row">
+                            <div class="col-md-6 mb-3">
+                                <label for="telephone" class="form-label">Téléphone</label>
+                                <input type="tel" class="form-control" id="telephone" required>
+                            </div>
+                            <div class="col-md-6 mb-3">
+                                <label for="date" class="form-label">Date</label>
+                                <input type="date" class="form-control" id="date" required>
+                            </div>
+                        </div>
+                        
+                        <div class="row">
+                            <div class="col-md-6 mb-3">
+                                <label for="heure" class="form-label">Heure</label>
+                                <select class="form-select" id="heure" required>
+                                    <option value="">Choisir une heure</option>
+                                    <option value="12:00">12:00</option>
+                                    <option value="12:30">12:30</option>
+                                    <option value="13:00">13:00</option>
+                                    <option value="13:30">13:30</option>
+                                    <option value="19:00">19:00</option>
+                                    <option value="19:30">19:30</option>
+                                    <option value="20:00">20:00</option>
+                                    <option value="20:30">20:30</option>
+                                    <option value="21:00">21:00</option>
+                                </select>
+                            </div>
+                            <div class="col-md-6 mb-3">
+                                <label for="personnes" class="form-label">Nombre de personnes</label>
+                                <select class="form-select" id="personnes" required>
+                                    <option value="">Choisir</option>
+                                    <option value="1">1 personne</option>
+                                    <option value="2">2 personnes</option>
+                                    <option value="3">3 personnes</option>
+                                    <option value="4">4 personnes</option>
+                                    <option value="5">5 personnes</option>
+                                    <option value="6">6 personnes</option>
+                                    <option value="7+">7+ personnes</option>
+                                </select>
+                            </div>
+                        </div>
+                        
+                        <div class="mb-3">
+                            <label for="message" class="form-label">Message spécial</label>
+                            <textarea class="form-control" id="message" rows="3" placeholder="Allergies, occasions spéciales..."></textarea>
+                        </div>
+                        
+                        <div class="text-center">
+                            <button type="submit" class="btn btn-reservation">Réserver maintenant</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- TESTIMONIALS SECTION -->
+    <section class="testimonials-section" id="testimonials">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12 text-center mb-5">
+                    <h2 class="section-title">Ils nous font <span class="highlight">confiance</span></h2>
+                    <p class="section-subtitle">Ce que nos clients disent de nous</p>
+                </div>
+            </div>
+            
+            <div class="row">
+                <div class="col-lg-10 mx-auto">
+                    <div class="testimonials-carousel">
+                        <div class="testimonial-card">
+                            <div class="testimonial-avatar">
+                                <img src="assets/images/avatar1.jpg" alt="Aminata Diallo">
+                            </div>
+                            <div class="testimonial-rating">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                            </div>
+                            <p class="testimonial-text">"Une expérience culinaire exceptionnelle ! Le thieboudienne est authentique et le service impeccable. Je reviens chaque semaine."</p>
+                            <h4 class="testimonial-author">Aminata Diallo</h4>
+                        </div>
+                    </div>
+                    
+                    <div class="testimonial-controls">
+                        <button class="testimonial-btn" onclick="previousTestimonial()">
+                            <i class="fas fa-chevron-left"></i>
+                        </button>
+                        <button class="testimonial-btn" onclick="nextTestimonial()">
+                            <i class="fas fa-chevron-right"></i>
+                        </button>
+                    </div>
+                    
+                    <div class="testimonial-indicators">
+                        <span class="indicator active" onclick="goToTestimonial(0)"></span>
+                        <span class="indicator" onclick="goToTestimonial(1)"></span>
+                        <span class="indicator" onclick="goToTestimonial(2)"></span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CONTACT SECTION -->
+    <section class="contact-section" id="contact">
+        <div class="container">
+            <div class="contact-grid">
+                <div class="contact-info">
+                    <h3>Contactez-nous <span class="highlight">Nous sommes là</span></h3>
+                    <div class="contact-items">
+                        <div class="contact-item">
+                            <div class="contact-icon">
+                                <i class="fas fa-map-marker-alt"></i>
+                            </div>
+                            <div class="contact-text">
+                                45 Avenue des Champs-Élysées, Paris
+                            </div>
+                        </div>
+                        <div class="contact-item">
+                            <div class="contact-icon">
+                                <i class="fas fa-phone"></i>
+                            </div>
+                            <div class="contact-text">
+                                +33 1 45 67 89 01
+                            </div>
+                        </div>
+                        <div class="contact-item">
+                            <div class="contact-icon">
+                                <i class="fas fa-envelope"></i>
+                            </div>
+                            <div class="contact-text">
+                                contact@ledelice-senegalais.fr
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="contact-form-container">
+                    <form class="contact-form" id="contactForm">
+                        <div class="mb-3">
+                            <label for="contactNom" class="form-label">Nom</label>
+                            <input type="text" class="form-control" id="contactNom" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="contactEmail" class="form-label">Email</label>
+                            <input type="email" class="form-control" id="contactEmail" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="sujet" class="form-label">Sujet</label>
+                            <input type="text" class="form-control" id="sujet" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="contactMessage" class="form-label">Message</label>
+                            <textarea class="form-control" id="contactMessage" rows="5" required></textarea>
+                        </div>
+                        <div class="text-center">
+                            <button type="submit" class="btn btn-reservation">Envoyer le message</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="footer-section">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-brand">
+                    <div class="footer-logo">LD</div>
+                    <h4 class="footer-name">Le Délice Sénégalais</h4>
+                    <p class="footer-slogan">L'authenticité africaine sublimée par la haute gastronomie</p>
+                </div>
+                
+                <div class="footer-column">
+                    <h4>Liens Rapides</h4>
+                    <ul class="footer-links">
+                        <li><a href="#home">Accueil</a></li>
+                        <li><a href="#menu">Menu</a></li>
+                        <li><a href="#reservation">Réservation</a></li>
+                        <li><a href="#contact">Contact</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-column">
+                    <h4>Horaires</h4>
+                    <ul class="footer-hours">
+                        <li><span>Lun-Jeu</span><span>12h-22h</span></li>
+                        <li><span>Ven-Sam</span><span>12h-23h30</span></li>
+                        <li><span>Dimanche</span><span>12h-21h</span></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-column">
+                    <h4>Contact & Réseaux</h4>
+                    <ul class="footer-links">
+                        <li>45 Avenue des Champs-Élysées, Paris</li>
+                        <li>+33 1 45 67 89 01</li>
+                        <li>contact@ledelice-senegalais.fr</li>
+                    </ul>
+                    <div class="footer-social">
+                        <a href="#" class="social-icon">
+                            <i class="fab fa-facebook-f"></i>
+                        </a>
+                        <a href="#" class="social-icon">
+                            <i class="fab fa-instagram"></i>
+                        </a>
+                        <a href="#" class="social-icon">
+                            <i class="fab fa-twitter"></i>
+                        </a>
+                        <a href="#" class="social-icon">
+                            <i class="fab fa-youtube"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p>&copy; 2026 Le Délice Sénégalais. Tous droits réservés.</p>
                 <div class="footer-bottom-links">
                     <a href="#">Mentions légales</a>
                     <a href="#">Politique de confidentialité</a>
-                    <a href="#">CGV</a>
                 </div>
             </div>
         </div>
     </footer>
-    
-    <script src="js/script.js"></script>
-  </body>
-</html>
-<!doctype html>
-<html lang="fr">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Le Délice Sénégalais</title>
-    <link rel="stylesheet" href="css/style.css" />
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
-      rel="stylesheet"
-    />
-  </head>
-  <body>
-    <!--Développer le Header complet (image, overlay, titre, boutons CTA)-->
-    <header class="header" id="home">
-      <div class="header-overlay"></div>
-      <div class="cardtext-bg-dark">
-        <!-- Image de fond du header et ajout du texte sur l'image -->
-        <img
-          src="assets/images/Page_d'accueil.jpeg"
-          class="card-img"
-          alt="Image du restaurant"
-        />
-        <!-- Navbar -->
-        <nav class="navbar">
-          <div class="nav-container">
-            <div class="nav-logo">
-              <a href="#home" class="logo-link">
-                <span class="logo-ld">LD</span> Le Délice Sénégalais
-              </a>
-            </div>
 
-            <!-- Menu Desktop -->
-            <ul class="nav-menu">
-              <li class="nav-item">
-                <a href="#home" class="nav-link">Accueil</a>
-              </li>
-              <li class="nav-item">
-                <a href="#menu" class="nav-link">Notre Menu</a>
-              </li>
-              <li class="nav-item">
-                <a href="#specials" class="nav-link">Offres spéciales</a>
-              </li>
-              <li class="nav-item">
-                <a href="#reservation" class="nav-link">Réservation</a>
-              </li>
-              <li class="nav-item">
-                <a href="#gallery" class="nav-link">Galerie</a>
-              </li>
-              <li class="nav-item">
-                <a href="#testimonials" class="nav-link">Témoignages</a>
-              </li>
-              <li class="nav-item">
-                <a href="#contact" class="nav-link">Contact</a>
-              </li>
-            </ul>
-
-            <!-- Hamburger Menu -->
-            <div class="hamburger">
-              <span class="bar"></span>
-              <span class="bar"></span>
-              <span class="bar"></span>
-            </div>
-          </div>
-        </nav>
-        <div class="contenus_texte">
-          <h5 class="nom_restaurant" aria-label="Nom du restaurant">
-            Le Délice <br /><span style="color: #ffd700">Sénégalais</span>
-          </h5>
-          <div class="slogan_boutons">
-            <h1 class="slogan">
-              L'authenticité africaine sublimée par la haute gastronomie
-            </h1>
-            <div class="header-buttons">
-              <a href="#menu" class="btn btn-primary">Réserver une Table</a>
-              <a href="#reservation" class="btn btn-secondary"
-                >Commander maintenant</a
-              >
-              <div
-                class="mouse-container"
-                aria-label="Icône souris animée"
-                role="img"
-              >
-                <div class="mouse"><div class="wheel"></div></div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </header>
-
-    <!-- Sections placeholder -->
-
-    <section id="menu" class="section">
-      <div class="container"></div>
-    </section>
-
-    <section id="specials" class="section">
-      <div class="container"></div>
-    </section>
-
-    <section id="reservation" class="section">
-      <div class="container"></div>
-    </section>
-
-    <section id="gallery" class="section">
-      <div class="container"></div>
-    </section>
-
-    <section id="testimonials" class="section">
-      <div class="container"></div>
-    </section>
-
-    <section id="contact" class="section section_contact">
-  <div class="container">
-    <div class="les_contact">
-      <h5 class="nous_contacter" aria-label="Nom du restaurant">
-        <span style="color: aliceblue;">Nous</span> <span style="color: #ffd700">Contacter</span>
-      </h5>
-      <h3 style="color: aliceblue; text-align: center;">N'hésitez pas à nous écrire pour toute question ou demande</h3>
+    <!-- TOAST NOTIFICATION -->
+    <div class="toast" id="toast">
+        <span id="toastMessage">Message envoyé avec succès !</span>
     </div>
-    
-    <div class="grid-two-columns-equal">  
-      
-      <div class="left-column">  
-        <section class="card yellow" aria-label="Informations">  
-          <h2>Informations</h2>  
-          <div class="item" aria-label="Adresse">  
-            <div class="icon" aria-hidden="true">📍</div>  
-            <div>  
-              <div class="item-label">Adresse</div>  
-              <div class="item-value">  
-                Rue princesse <br />Côte d'ivoire, 01 BP 12345 Abidjan 01 
-              </div>  
-            </div>  
-          </div>  
-          <div class="item" aria-label="Téléphone">  
-            <div class="icon" aria-hidden="true">📞</div>  
-            <div>  
-              <div class="item-label">Téléphone</div>  
-              <div class="item-value">+225 07 78 01 45 37</div>  
-            </div>  
-          </div>  
-          <div class="item" aria-label="Email">  
-            <div class="icon" aria-hidden="true">✉️</div>  
-            <div>  
-              <div class="item-label">Email</div>  
-              <div class="item-value">contact@delicesenegalais.fr</div>  
-            </div>  
-          </div>  
-        </section>  
 
-        <section class="card beige" aria-label="Horaires d'ouverture" style="margin-top: 1rem;">  
-          <h2>Horaires d'ouverture</h2>  
-          <div class="hours" aria-label="Horaires">  
-            <div class="hours-line">  
-              <span class="hours-label">Lundi - Jeudi</span><span class="hours-value">12h00 - 22h00</span>  
-            </div>  
-            <div class="hours-line">  
-              <span class="hours-label">Vendredi - Samedi</span><span class="hours-value">12h00 - 23h30</span>  
-            </div>  
-            <div class="hours-line">  
-              <span class="hours-label">Dimanche</span><span class="hours-value">12h00 - 21h00</span>  
-            </div>  
-          </div>  
-        </section>  
-      </div>  
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- Custom JS -->
+    <script>
+        // Navbar scroll effect
+        let isScrolled = false;
 
-      <section class="card beige" aria-label="Formulaire de contact">  
-        <h2>Envoyez-nous un message</h2>  
-        <form action="#" method="post" onsubmit="event.preventDefault(); alert('Message envoyé (demo)');">  
-          <div class="form-field">  
-            <label for="nom">Nom *</label>  
-            <input id="nom" name="nom" type="text" placeholder="Votre nom" required />  
-          </div>  
-          <div class="form-field">  
-            <label for="telephone">Téléphone *</label>  
-            <input id="telephone" name="telephone" type="tel" placeholder="+225 07 78 01 45 37" required />  
-          </div>  
-          <div class="form-field">  
-            <label for="email">Email *</label>  
-            <input id="email" name="email" type="email" placeholder="votre@email.com" required />  
-          </div>  
-          <div class="form-field">  
-            <label for="objet">Objet *</label>  
-            <input id="objet" name="objet" type="text" placeholder="Objet de votre message" required />  
-          </div>  
-          <div class="form-field">  
-            <label for="message">Message *</label>  
-            <textarea id="message" name="message" rows="4" placeholder="Votre message..." required></textarea>
-          </div>
-          <button type="submit" class="btn-submit">Envoyer</button>
-        </form>
-      </section>
-    </div>
-  </div>
-</section>
-    <script src="js/script.js"></script>
-  </body>
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 50) {
+                if (!isScrolled) {
+                    document.getElementById('navbar').classList.add('scrolled');
+                    isScrolled = true;
+                }
+            } else {
+                if (isScrolled) {
+                    document.getElementById('navbar').classList.remove('scrolled');
+                    isScrolled = false;
+                }
+            }
+        });
+
+        // Mobile menu toggle
+        function toggleMobileMenu() {
+            const mobileMenu = document.getElementById('mobileMenu');
+            const menuIcon = document.getElementById('menuIcon');
+            const closeIcon = document.getElementById('closeIcon');
+            
+            mobileMenu.classList.toggle('active');
+            
+            if (mobileMenu.classList.contains('active')) {
+                menuIcon.style.display = 'none';
+                closeIcon.style.display = 'block';
+            } else {
+                menuIcon.style.display = 'block';
+                closeIcon.style.display = 'none';
+            }
+        }
+
+        // Smooth scroll to section
+        function scrollToSection(sectionId) {
+            const element = document.querySelector(sectionId);
+            if (element) {
+                element.scrollIntoView({ behavior: 'smooth' });
+            }
+            
+            // Close mobile menu if open
+            const mobileMenu = document.getElementById('mobileMenu');
+            const menuIcon = document.getElementById('menuIcon');
+            const closeIcon = document.getElementById('closeIcon');
+            
+            if (mobileMenu.classList.contains('active')) {
+                mobileMenu.classList.remove('active');
+                menuIcon.style.display = 'block';
+                closeIcon.style.display = 'none';
+            }
+        }
+
+        // Menu modal functions
+        function openMenuModal() {
+            document.getElementById('menuModal').classList.add('active');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeMenuModal() {
+            document.getElementById('menuModal').classList.remove('active');
+            document.body.style.overflow = 'auto';
+        }
+
+        // Testimonials carousel
+        let currentTestimonial = 0;
+        const testimonials = [
+            {
+                text: "Une expérience culinaire exceptionnelle ! Le thieboudienne est authentique et le service impeccable. Je reviens chaque semaine.",
+                author: "Aminata Diallo"
+            },
+            {
+                text: "L'ambiance est chaleureuse et les plats délicieux. J'y reviens chaque week-end pour déguster les spécialités sénégalaises.",
+                author: "Omar Seck"
+            },
+            {
+                text: "Le meilleur restaurant sénégalais de Paris ! Qualité et authenticité garanties. Je recommande vivement à tous mes amis.",
+                author: "Fatou Mbaye"
+            }
+        ];
+
+        function updateTestimonial() {
+            const card = document.querySelector('.testimonial-text');
+            const author = document.querySelector('.testimonial-author');
+            const indicators = document.querySelectorAll('.indicator');
+            
+            card.textContent = `"${testimonials[currentTestimonial].text}"`;
+            author.textContent = testimonials[currentTestimonial].author;
+            
+            indicators.forEach((indicator, index) => {
+                indicator.classList.toggle('active', index === currentTestimonial);
+            });
+        }
+
+        function nextTestimonial() {
+            currentTestimonial = (currentTestimonial + 1) % testimonials.length;
+            updateTestimonial();
+        }
+
+        function previousTestimonial() {
+            currentTestimonial = (currentTestimonial - 1 + testimonials.length) % testimonials.length;
+            updateTestimonial();
+        }
+
+        function goToTestimonial(index) {
+            currentTestimonial = index;
+            updateTestimonial();
+        }
+
+        // Form submissions
+        document.getElementById('reservationForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            showToast('Réservation envoyée avec succès !');
+            this.reset();
+        });
+
+        document.getElementById('contactForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            showToast('Message envoyé avec succès !');
+            this.reset();
+        });
+
+        // Toast notification
+        function showToast(message) {
+            const toast = document.getElementById('toast');
+            const toastMessage = document.getElementById('toastMessage');
+            
+            toastMessage.textContent = message;
+            toast.classList.add('show');
+            
+            setTimeout(() => {
+                toast.classList.remove('show');
+            }, 3000);
+        }
+
+        // Auto-scroll testimonials
+        setInterval(nextTestimonial, 5000);
+    </script>
+</body>
 </html>
